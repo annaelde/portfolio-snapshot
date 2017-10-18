@@ -1,0 +1,53 @@
+{
+  "name": "anna.elde.codes",
+  "version": "1.0.0",
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "description": "Portfolio site for Anna Elde.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --watch --env.dev",
+    "prod": "webpack --env.prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/annaelde/anna.elde.codes.git"
+  },
+  "author": "Anna Elde",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/annaelde/anna.elde.codes/issues"
+  },
+  "homepage": "https://gitlab.com/annaelde/anna.elde.codes#README",
+  "devDependencies": {
+    "autoprefixer": "^7.1.4",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "ifdef-loader": "^2.0.1",
+    "json-loader": "^0.5.7",
+    "node-sass": "^4.5.3",
+    "postcss-base64": "^0.7.1",
+    "postcss-clean": "^1.1.0",
+    "postcss-inline-svg": "^3.0.0",
+    "postcss-loader": "^2.0.6",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^6.0.6",
+    "webpack": "^3.6.0",
+    "webpack-if": "^0.1.2",
+    "webpack-livereload-plugin": "^1.0.0",
+    "webpack-merge": "^4.1.0"
+  },
+  "dependencies": {
+    "barba.js": "^1.0.0",
+    "js-cookie": "^2.1.4",
+    "scrollreveal": "3.3.6",
+    "superagent": "^3.6.0"
+  }
+}

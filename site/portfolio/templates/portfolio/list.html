@@ -1,0 +1,39 @@
+{% extends 'aec/base.html' %}
+
+{% block meta-title %}
+Projects
+{% endblock %} 
+
+{% block meta-description %}
+View the projects I've worked on to develop my tech skills.
+{% endblock %}
+
+{% block main %}
+
+<div class="heading">
+    <div class="project-list__list-heading">
+        <h1>Projects</h1>
+
+        <div class="filter">
+        
+            <button class="filter__button" style="display:none; transition:none;" title="Filter Projects"><span class="button__label">Filter Projects</span></button>
+            {% csrf_token %}
+            <ul class="filter__options filter__options--closed" style="transition:none;">
+                {% for tag in project_tags %}
+                    {% if request.GET.tag %}
+                        <li><a class="filter__option filter__option--inactive no-barba" href="{% url 'portfolio:project_list' %}?{{ request.GET.urlencode }}&tag={{ tag.slug }}">{{ tag }}</a></li>
+                    {% else %}
+                        <li><a class="filter__option filter__option--inactive no-barba" href="{% url 'portfolio:project_list' %}?{{ request.GET.urlencode }}tag={{ tag.slug }}">{{ tag }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+<div class="container project-list--vert">
+    {% include "portfolio/inner_list.html" %}
+</div>
+
+{% endblock main %}

@@ -1,0 +1,77 @@
+.pagination
+{
+	@include container-page;
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 0 scale(1) * 1rem;
+}
+
+.pagination__numbers
+{
+	box-sizing: border-box;
+	display: flex;
+	flex: 1 0 auto;
+	justify-content: space-around;
+	list-style: none;
+	padding: 0;
+	position: relative;
+
+	li
+	{
+		display: block;
+		text-align: center;
+	}
+}
+
+.pagination__nav
+{
+	background-repeat: no-repeat;
+	background-size: scale(2) * 1em;
+	border: 0;
+	content: '';
+	cursor: pointer;
+	display: inline-block;
+	height: scale(2) * 1em;
+	position: relative;
+	width: scale(2) * 1em;
+}
+
+.pagination__nav--previous
+{
+	background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_primary}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rewind"><polygon points="11 19 2 12 11 5 11 19"></polygon><polygon points="22 19 13 12 22 5 22 19"></polygon></svg>');
+	left: (1.3em / 2);
+}
+
+.pagination__nav--previous--disabled
+{
+	background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_grey}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rewind"><polygon points="11 19 2 12 11 5 11 19"></polygon><polygon points="22 19 13 12 22 5 22 19"></polygon></svg>');
+	cursor: default;
+}
+
+.pagination__number
+{
+	font-weight: 900;
+	padding: 1rem scale(-1) * 1rem;
+}
+
+.pagination__number--current
+{
+	background: $c_primary;
+	border-radius: 3px;
+	color: $c_background;
+	cursor: default;
+}
+
+.pagination__nav--next
+{
+	background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_primary}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-fast-forward"><polygon points="13 19 22 12 13 5 13 19"></polygon><polygon points="2 19 11 12 2 5 2 19"></polygon></svg>');
+	right: (1.3em / 2);
+}
+
+.pagination__nav--next--disabled
+{
+	background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_grey}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-fast-forward"><polygon points="13 19 22 12 13 5 13 19"></polygon><polygon points="2 19 11 12 2 5 2 19"></polygon></svg>');
+	cursor: default;
+}

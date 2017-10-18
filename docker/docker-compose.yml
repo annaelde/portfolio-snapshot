@@ -1,0 +1,74 @@
+version: '2'  
+
+services:  
+  nginx:
+    image: nginx:1.13
+    container_name: ${COMPOSE_PROJECT_NAME}_nginx
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - web
+      - php
+    volumes_from:
+      - web
+      - php
+    depends_on:
+      - web
+      - php
+  
+  php:
+    build:
+      dockerfile: Dockerfile.php
+      context: .
+      args:
+        project: ${COMPOSE_PROJECT_NAME}
+    image: php:${COMPOSE_PROJECT_NAME}
+    expose:
+      - 9000
+    container_name: ${COMPOSE_PROJECT_NAME}_php
+    volumes:
+      - ./php.ini:/usr/local/etc/php/php.ini
+    links:
+      - web
+    volumes_from:
+      - web
+    depends_on:
+      - web
+
+  web:
+    build:
+      dockerfile: Dockerfile.web
+      context: .
+      args:
+        project: ${COMPOSE_PROJECT_NAME}
+    image: django:${COMPOSE_PROJECT_NAME}
+    container_name: ${COMPOSE_PROJECT_NAME}_django
+    command: bash -c "export DJANGO_SETTINGS_MODULE=settings.development &&
+             gunicorn ${COMPOSE_PROJECT_NAME}.wsgi -b 0.0.0.0:8000 --reload"
+    depends_on:
+      - postgres
+    links:
+      - postgres
+    volumes:
+      - ../site:/${COMPOSE_PROJECT_NAME}
+    expose:
+      - 8000
+
+  postgres:
+      image: postgres:9.6
+      container_name: ${COMPOSE_PROJECT_NAME}_postgres
+      volumes:
+        - db:/var/lib/postgresql/data
+        - ./db/:/db/
+      ports: 
+        - "5432:5432"
+      environment:
+        - POSTGRES_USER=${DB_USER}
+        - POSTGRES_PASSWORD=${DB_PASS}
+        - POSTGRES_DB=${DB_NAME}
+
+volumes:
+    db:
+        driver: local

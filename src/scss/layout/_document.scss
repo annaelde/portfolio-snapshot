@@ -1,0 +1,30 @@
+html
+{
+    font-size: $s_root;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+@include break(small)
+{
+	html
+	{
+		font-size: $s_root * 0.8;
+	}
+}
+
+body
+{
+    @include grid-column;
+	background: $c_background;
+	margin: 0 auto;
+    min-height: 100%;
+    overflow-y: scroll;
+    position: relative;
+}
+
+// Fixed width container
+.container
+{
+	@include container-page;
+}

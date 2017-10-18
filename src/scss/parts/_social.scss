@@ -1,0 +1,116 @@
+$c_social: $c_primary;
+$c_social--hover: $c_secondary;
+
+.social
+{
+	@include container-paragraph;
+	align-items: center;
+	display: flex;
+	flex-flow: row wrap;
+	margin-bottom: scale(1) * 1rem;
+	margin-top: scale(1) * 1rem;
+}
+
+.social__icons
+{
+	display: flex;
+	list-style: none;
+	padding-bottom: 0;
+}
+
+.social__icons--vertical
+{
+	align-items: center;
+	flex-direction: column;
+}
+
+.social__icons--horizontal
+{
+	flex-flow: row wrap;
+}
+
+.social__title
+{
+	margin-right: 1rem;
+}
+
+.social__icon
+{
+	@include button-lines-meeting($c_social, $c_social--hover, 2px);
+	font-size: scale(-1) * 1rem;
+	height: scale(2) * 1rem;
+	margin: 1.333rem;
+	transition: background-image .2s;
+	transition: margin .3s;
+	width: scale(2) * 1rem;
+	@include break(tiny)
+	{
+		margin: .777rem;
+	}
+}
+
+.social__icon--facebook
+{
+	background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_social}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>');
+	background-size: 1.5em;
+
+	&:hover
+	{
+		background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_social--hover}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>');
+	}
+}
+
+.social__icon--twitter
+{
+	background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" fill="none" stroke="#{$c_social}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>');
+	background-size: 1.25em;
+
+	&:hover
+	{
+		background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" fill="none" stroke="#{$c_social--hover}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>');
+	}
+}
+
+.social__icon--reddit
+{
+	background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#{$c_social}" stroke-width=".8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.686, 5.023c0.45, -0.334 1.088, -0.237 1.425, 0.216c0.336, 0.453 0.245, 1.092 -0.205, 1.426"/><path d="M2.314, 5.023c-0.45, -0.334 -1.088, -0.237 -1.425, 0.216c-0.336, 0.453 -0.245, 1.092 0.205, 1.426"/><ellipse cx="6" cy="7.4" rx="4.576" ry="3.123" /><ellipse cx="4.32" cy="6.773" rx="0.835" ry="0.787" stroke="none" fill="#{$c_social}"/><ellipse cx="7.68" cy="6.764" rx="0.835" ry="0.787" stroke="none" fill="#{$c_social}" /><path d="M4.264, 8.785c0, 0 1.596, 1.194 3.472, -0.013"/><path d="M8.171, 2.259c0, 0 -0.922, -0.172 -1.518, 0.243c-0.506, 0.353 -0.706, 1.667 -0.706, 1.667"/><ellipse cx="8.924" cy="2.263" rx="0.835" ry="0.787"/></svg>');
+	background-size: 1.5em;
+
+	&:hover
+	{
+		background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#{$c_social--hover}" stroke-width=".8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.686, 5.023c0.45, -0.334 1.088, -0.237 1.425, 0.216c0.336, 0.453 0.245, 1.092 -0.205, 1.426"/><path d="M2.314, 5.023c-0.45, -0.334 -1.088, -0.237 -1.425, 0.216c-0.336, 0.453 -0.245, 1.092 0.205, 1.426"/><ellipse cx="6" cy="7.4" rx="4.576" ry="3.123" /><ellipse cx="4.32" cy="6.773" rx="0.835" ry="0.787" stroke="none" fill="#{$c_social--hover}"/><ellipse cx="7.68" cy="6.764" rx="0.835" ry="0.787" stroke="none" fill="#{$c_social--hover}" /><path d="M4.264, 8.785c0, 0 1.596, 1.194 3.472, -0.013"/><path d="M8.171, 2.259c0, 0 -0.922, -0.172 -1.518, 0.243c-0.506, 0.353 -0.706, 1.667 -0.706, 1.667"/><ellipse cx="8.924" cy="2.263" rx="0.835" ry="0.787"/></svg>');
+	}
+}
+
+.social__icon--email
+{
+	background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_social}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22, 6 12, 13 2, 6"/></svg>');
+	background-size: 1.4em;
+
+	&:hover
+	{
+		background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_social--hover}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22, 6 12, 13 2, 6"/></svg>');
+	}
+}
+
+.social__icon--print
+{
+	background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_social}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-printer"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>');
+	background-size: 1.5em;
+
+	&:hover
+	{
+		background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_social--hover}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-printer"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>');
+	}
+}
+
+.social__icon--tumblr
+{
+	background-image: url('<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="42" height="42" viewBox="0 0 256 256" fill="none" stroke="#{$c_social}" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><path d="M168.08, 170.918c-2.969, 1.416-8.647, 2.648-12.881, 2.754c-12.783, 0.342-15.264-8.979-15.367-15.736v-49.705 h32.065V84.055h-31.954V43.382c0, 0-23.008, 0-23.383, 0c-0.385, 0-1.057, 0.337-1.152, 1.192c-1.368, 12.448-7.192, 34.296-31.416, 43.032 v20.624h16.16v52.167c0, 17.863, 13.176, 43.24, 47.959, 42.641c11.736-0.201, 24.77-5.113, 27.648-9.354L168.08, 170.918"/></svg>');
+	background-size: 1.9em;
+
+	&:hover
+	{
+		background-image: url('<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="42" height="42" viewBox="0 0 256 256" fill="none" stroke="#{$c_social--hover}" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><path d="M168.08, 170.918c-2.969, 1.416-8.647, 2.648-12.881, 2.754c-12.783, 0.342-15.264-8.979-15.367-15.736v-49.705 h32.065V84.055h-31.954V43.382c0, 0-23.008, 0-23.383, 0c-0.385, 0-1.057, 0.337-1.152, 1.192c-1.368, 12.448-7.192, 34.296-31.416, 43.032 v20.624h16.16v52.167c0, 17.863, 13.176, 43.24, 47.959, 42.641c11.736-0.201, 24.77-5.113, 27.648-9.354L168.08, 170.918"/></svg>');
+	}
+}

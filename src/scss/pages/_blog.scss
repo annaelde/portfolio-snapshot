@@ -1,0 +1,436 @@
+//////////////////////////////
+// POST LIST GALLERY VIEWS //
+////////////////////////////
+
+.post-list--vert
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.post-list--vert--ie
+{
+	@include break(medium)
+	{
+		flex-direction: column;
+		justify-content: flex-start;
+
+		.post-list__item--full
+		{
+			flex: 1 1 auto;
+			max-width: 100%;
+		}
+	}
+}
+
+.post-list--horiz
+{
+	@include container-page;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+	@include break(medium)
+	{
+		flex-wrap: wrap;
+	}
+}
+
+//////////////////////////
+// BASE POST LIST VIEW //
+////////////////////////
+
+.post-list__item
+{
+	@include card-hover(1);
+	display: flex;
+	flex-direction: column;
+	margin: 1em;
+	overflow: hidden;
+	position: relative;
+}
+
+.post-list__heading
+{
+	background: $c_primary;
+	padding: scale(-1) * 1rem;
+}
+
+.post-list__title
+{
+	color: $c_background;
+	font-size: $s_h2;
+	line-height: 1.333;
+}
+
+.post-list__summary
+{
+	box-sizing: border-box;
+	cursor: default;
+	padding: 0 scale(-1) * 1rem scale(-1) * 1rem;
+}
+
+.post-list__author
+{
+	display: inline-block;
+	white-space: nowrap;
+
+	&::before
+	{
+		@include icon-base('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_tertiary}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>');
+	}
+}
+
+.post-list__time
+{
+	display: inline-block;
+	white-space: nowrap;
+
+	&::before
+	{
+		@include icon-calendar($c_tertiary);
+	}
+}
+
+.post-list__meta
+{
+	@include type-regular;
+	cursor: default;
+	padding: scale(-1) * 1rem;
+	position: relative;
+}
+
+.post-list__comment-count
+{
+	display: inline-block;
+	white-space: nowrap;
+
+	&::before
+	{
+		@include icon-base('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_link}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>');
+		position: relative;
+		top: 1px;
+	}
+
+	&:hover:before
+	{
+		@include icon-base('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_link_hover}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>');
+	}
+}
+
+.post-list__comment-link
+{
+	display: inline-block;
+
+	&:visited
+	{
+		color: $c_tertiary;
+	}
+
+	&:hover
+	{
+		color: $c_tertiary_light;
+	}
+}
+
+//////////////////////////
+// FULL POST LIST VIEW //
+////////////////////////
+
+.post-list__item--full
+{
+	box-sizing: border-box;
+	flex: 1 1 45%;
+	max-width: 60rem;
+	min-height: 40rem;
+	min-width: 40rem;
+	@include tweak(tiny, 40)
+	{
+		min-width: 36rem;
+	}
+}
+
+.post-list__heading--full
+{
+	align-items: flex-start;
+	display: flex;
+	flex: 0 1 auto;
+	overflow: hidden;
+	padding: 0;
+
+	img
+	{
+		width: 100%;
+	}
+}
+
+///////////////////////////
+// SMALL POST LIST VIEW //
+/////////////////////////
+
+.post-list__item--small
+{
+	flex: 1 1 auto;
+	min-height: 33rem;
+	@include break(medium)
+	{
+		flex: 1 1 auto;
+		max-width: 100%;
+	}
+}
+
+////////////////////////////////
+// SINGLE (DETAIL VIEW) POST //
+//////////////////////////////
+
+.post
+{
+	@extend %item;
+}
+
+.post__content
+{
+	@extend %item__content;
+}
+
+.post__banner
+{
+	@extend %item__banner;
+}
+
+.post__separator
+{
+	@include hr-heading-zigzag($c_primary, $c_secondary, $c_background, 34%);
+	font-size: $s_h2;
+}
+
+////////////////////
+// RELATED POSTS //
+//////////////////
+
+.post__related-posts
+{
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: scale(5) * 1rem;
+}
+
+.related-posts_heading
+{
+	@include hr-heading-zigzag($c_primary, $c_secondary, $c_background, 34%);
+	font-size: $s_h2;
+}
+
+.related-posts
+{
+	@include container-page;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	max-width: 100%;
+}
+
+.related-post
+{
+	@include card-hover(1);
+	height: 15rem;
+	margin: 1.333rem;
+	position: relative;
+	width: 30rem;
+}
+
+.related-post__title
+{
+	@include type-regular--packed;
+	@include bold;
+	align-items: center;
+	background: rgba($c_primary, 0.8);
+	box-sizing: border-box;
+	color: $c_background;
+	display: flex;
+	height: 100%;
+	justify-content: center;
+	padding: scale(-1) * 1rem;
+	position: relative;
+	transition: color .3s, background .3s;
+	width: 100%;
+}
+
+.related-post__thumbnail
+{
+	height: auto;
+	position: absolute;
+	width: 100%;
+}
+
+//////////////////////
+// DISQUS COMMENTS //
+////////////////////
+
+#show-comments
+{
+	@include comment-button;
+}
+
+#disqus_thread
+{
+	@include container-paragraph;
+	box-sizing: border-box;
+	font-family: $font_paragraph;
+	margin-top: 60px;
+	overflow: hidden;
+	padding: 0 1em;
+}
+
+#disqus_thread[src='']
+{
+	height: 0;
+	margin: scale(1) * 1em 0;
+	padding: 0;
+}
+
+a[name='comments']
+{
+	position: relative;
+	top: -300px;
+}
+
+///////////////
+// MARKDOWN //
+/////////////
+
+article .toc
+{
+	@include container-paragraph;
+	display: block;
+	margin-bottom: scale(0) * 1rem;
+}
+
+article .toc .toctitle
+{
+	@include type-large;
+	color: $c_primary;
+	font-weight: bold;
+}
+
+article .toc ul
+{
+	font-size: scale(0) * 1rem;
+	list-style-position: inside;
+	margin: 0;
+	padding: 0;
+}
+
+article .toc > ul
+{
+	// H1
+	list-style-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 30" fill="#{$c_secondary}" stroke="#{$c_secondary}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" transform="translate(0 6)"></path></svg>');
+
+	& > li > ul
+	{
+		list-style-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 30" fill="#{$c_primary}" stroke="#{$c_primary}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" transform="translate(0 6)"></path></svg>');
+		padding-left: scale(1) * 10px;
+
+		& > li > ul
+		{
+			list-style-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 30" fill="#{$c_secondary}" stroke="#{$c_secondary}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" transform="translate(0 6)"></path></svg>');
+			padding-left: scale(1) * 10px;
+
+			& > li > ul
+			{
+				list-style-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 30" fill="#{$c_primary}" stroke="#{$c_primary}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" transform="translate(0 6)"></path></svg>');
+				padding-left: scale(1) * 10px;
+			}
+		}
+	}
+}
+
+article .toclink
+{
+	left: 0;
+	position: absolute;
+	top: -30px;
+}
+
+// Fix for sticky header
+article
+{
+	h2, h3, h4, h5
+	{
+		margin-top: scale(2) * scale(-1) * -1rem;
+		padding-top: scale(2) * scale(-1) * 1rem;
+		@include break(small)
+		{
+			margin-top: scale(3) * 1.333 * -1rem;
+			padding-top: scale(3) * 1.333 * -1rem;
+		}
+	}
+}
+
+article .toc.sidebar
+{
+	background: rgba($c_background, 0.9);
+	box-sizing: border-box;
+	display: block;
+	height: calc(100vh - 80px);
+	left: 0;
+	max-width: calc(((100% - 79.3rem) - 14rem) / 2);
+	opacity: 0;
+	overflow: hidden;
+	padding: scale(-1) * 1rem;
+	pointer-events: none;
+	position: fixed;
+	top: 80px;
+	transition: opacity 0.3s;
+
+	.toctitle
+	{
+		display: none;
+	}
+
+	> ul > li
+	{
+		list-style-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="17" viewBox="0 0 24 28" fill="#{$c_secondary}" stroke="#{$c_secondary}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" transform="translate(0 6)"></path></svg>');
+
+		a
+		{
+			font-size: scale(-1) * 1rem;
+		}
+
+		> ul
+		{
+			display: none;
+		}
+	}
+
+	li
+	{
+		line-height: 1.25;
+		margin-bottom: 0.3em;
+		max-width: 100%;
+	}
+
+	ul
+	{
+		box-sizing: border-box;
+		height: 100%;
+		list-style-position: outside;
+		max-width: 100%;
+		padding-left: 1em;
+	}
+}
+
+article .toc.sidebar--active
+{
+	opacity: 1;
+	pointer-events: all;
+	@include tweak(large, 100)
+	{
+		opacity: 0;
+	}
+}

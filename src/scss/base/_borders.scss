@@ -1,0 +1,100 @@
+@mixin border-circle
+{
+	border: 3px solid $c_primary;
+	border-radius: 50%;
+	padding: scale(-1) * .5 * 1rem;
+}
+
+@mixin hr-zigzag($foreground, $background, $thickness)
+{
+	background: linear-gradient(135deg, $background $thickness, transparent $thickness) -25px 0, linear-gradient(225deg, $background $thickness, transparent $thickness) -25px 0, linear-gradient(315deg, $background $thickness, transparent $thickness), linear-gradient(45deg, $background $thickness, transparent $thickness);
+	background-color: $foreground;
+	background-size: 50px 50px;
+	border: none;
+	height: 50px;
+}
+
+@mixin hr-line($border-color, $background-color)
+{
+    border-bottom: 3px solid $border-color;
+}
+
+@mixin hr-heading-zigzag($text-color, $border-color, $background-color, $thickness)
+{
+	color: $text-color;
+	box-sizing: border-box;
+	margin: scale(-1) * 1rem;
+	position: relative;
+	z-index: $z_page;
+	background: $background-color;
+	width: 100%;
+	text-align: center;
+
+	span
+	{
+		background-color: $background-color;
+		padding: 1.333rem;
+	}
+
+	&::before
+	{
+		content: "";
+		display: block;
+		position: absolute;
+		z-index: $z_hidden;
+		top: calc(50% - 0.5em);
+		width: 100%;
+        background: linear-gradient(135deg, $background-color $thickness, transparent $thickness) -.5em 0, linear-gradient(225deg, $background-color $thickness, transparent $thickness) -.5em 0, linear-gradient(315deg, $background-color $thickness, transparent $thickness), linear-gradient(45deg, $background-color $thickness, transparent $thickness);
+        background-color: $border-color;
+        background-size: 1em 1em;
+        border: none;
+        height: 1em;
+	}
+}
+
+@mixin hr-heading-line($text-color, $border-color, $background-color)
+{
+	color: $text-color;
+	box-sizing: border-box;
+	margin: scale(-1) * 1rem;
+	position: relative;
+	z-index: $z_page;
+	background: $background-color;
+	width: 100%;
+	text-align: center;
+
+	span
+	{
+		background-color: $background-color;
+		padding: scale(-1) * 1rem;
+	}
+
+	&::before
+	{
+		content: "";
+		display: block;
+		position: absolute;
+		z-index: $z_hidden;
+		top: 50%;
+		width: 100%;
+		border-bottom: 3px solid $border-color;
+	}
+}
+
+////////////////////
+// Link Outlines //
+//////////////////
+a:focus
+{
+	outline: thin dotted;
+}
+
+button:focus
+{
+	outline: thin dotted;
+}
+
+input:focus
+{
+	outline: thin dotted;
+}

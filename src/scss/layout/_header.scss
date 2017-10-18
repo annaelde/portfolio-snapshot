@@ -1,0 +1,331 @@
+header
+{
+	border-bottom: 3px solid $c_secondary;
+	flex: 0 0 auto;
+
+	.container
+	{
+		display: flex;
+		justify-content: space-around;
+		padding: 0 scale(0) * 1rem;
+	}
+}
+
+nav
+{
+	font-family: $font_heading;
+	font-size: $s_nav;
+	transition: font-size 0.5s;
+
+	ul
+	{
+		@include list-plain;
+		align-items: center;
+		display: flex;
+		flex: 1 auto;
+		flex-direction: row;
+		flex-wrap: wrap;
+		height: 100%;
+		justify-content: space-between;
+		margin: 0;
+	}
+
+	li
+	{
+		display: block;
+		line-height: scale(-1);
+		margin: 0 scale(0) * 1rem;
+		transition: margin 0.3s;
+	}
+
+	a
+	{
+		color: $c_nav;
+		height: 100%;
+		outline-offset: -5px;
+		text-decoration: none;
+		transition: color .3s;
+		width: 100%;
+
+		&:hover
+		{
+			color: $c_nav_hover;
+
+			&::after
+			{
+				width: 100%;
+			}
+		}
+
+		&:active
+		{
+			color: $c_nav_active;
+
+			&::after
+			{
+				background: $c_nav_active;
+				width: 100%;
+			}
+		}
+
+		&::after
+		{
+			background: $c_nav_hover;
+			bottom: 5px;
+			content: '';
+			display: block;
+			height: 3px;
+			left: 50%;
+			position: relative;
+			transform: translateX(-50%);
+			transition: width .3s;
+			width: 0%;
+		}
+	}
+}
+
+nav.ie
+{
+	transition: font-size 0s;
+}
+
+header.sticky, header.sticky--ie
+{
+	@media screen and (min-height: 400px)
+	{
+		@include shadow(4);
+		background: $c_background;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: $z_header--sticky;
+
+		nav
+		{
+			font-size: scale(2) * 1em;
+		}
+
+		#title a
+		{
+			font-size: scale(2) * 1em;
+		}
+	}
+}
+
+#title
+{
+	flex: 1 auto;
+
+	a
+	{
+		color: $c_primary;
+		font-family: $font_title;
+		font-size: $s_title;
+		line-height: scale(-1);
+		text-decoration: none;
+		text-shadow: 1px 1px 2px $c_secondary;
+		transition: font-size 0.5s, line-height 0.5s, color 0.3s;
+	}
+
+	a:hover
+	{
+		color: $c_title_hover;
+	}
+}
+
+#menu-icon
+{
+	background-color: $c_background;
+	background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_primary}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>');
+	background-repeat: no-repeat;
+	background-size: 1em;
+	border: 0;
+	content: '';
+	cursor: pointer;
+	display: none;
+	font-size: 1em;
+	height: 1em;
+	transition: font-size .5s background-color .4s ease-in-out;
+	width: 1em;
+
+	&:hover
+	{
+		background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_nav_hover}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>');
+
+		&:focus
+		{
+			outline: $c_secondary thin dotted;
+		}
+	}
+
+	&.open
+	{
+		background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_nav}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>');
+
+		&:focus
+		{
+			outline: $c_background thin dotted;
+		}
+	}
+
+	&.open:hover
+	{
+		background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_nav_hover}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>');
+
+		&:focus
+		{
+			outline: $c_secondary thin dotted;
+		}
+	}
+
+	&:focus
+	{
+		outline: $c_primary thin dotted;
+	}
+}
+
+// Hamburger Menu
+@include break(medium)
+{
+	@media screen and (min-height: 400px)
+	{
+		header.sticky nav ul
+		{
+			padding-top: scale(4) * 1rem;
+		}
+	}
+
+	nav ul
+	{
+		align-items: flex-end;
+		background: $c_nav;
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+		justify-content: flex-start;
+		padding-top: scale(4) * 1.333 * 1rem;
+		position: fixed;
+		right: -100%;
+		top: 0;
+		transition: right 0.5s, padding-top .3s;
+	}
+
+	nav
+	{
+		z-index: $z_drawer;
+	}
+
+	nav a
+	{
+		color: $c_drw;
+	}
+
+	nav.open
+	{
+		ul
+		{
+			@include shadow(5);
+			right: 0;
+		}
+
+		a
+		{
+			&:hover
+			{
+				color: $c_drw_hover;
+			}
+
+			&:active
+			{
+				color: $c_drw_hover;
+
+				&::after
+				{
+					background: $c_drw_hover;
+				}
+			}
+
+			&::after
+			{
+				background: $c_drw_hover;
+			}
+		}
+
+		#menu-icon
+		{
+			background-color: $c_nav;
+			background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_drw}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>');
+			position: relative;
+			z-index: 1;
+
+			&:hover
+			{
+				background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_drw_hover}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>');
+			}
+
+			&.open
+			{
+				background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_drw}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>');
+			}
+
+			&.open:hover
+			{
+				background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_drw_hover}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>');
+			}
+        }
+    }
+    
+    @media screen and (max-height: 400px)
+    {
+        header.sticky nav.open ul
+        {
+            right: -100%;
+        }
+    }
+}
+@include break(large)
+{
+	nav li
+	{
+		margin: 0 scale(-1) * 1rem;
+	}
+}
+@include break(medium)
+{
+	header .container
+	{
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	#title
+	{
+		flex: none;
+	}
+
+	#menu-icon
+	{
+		display: block;
+	}
+}
+@include break(small)
+{
+	#title a
+	{
+		font-size: scale(3) * 1em;
+	}
+
+	nav ul
+	{
+		padding-top: scale(3) * 1.333 * 1rem;
+	}
+}
+
+// Landscape Orientation
+@media screen and (max-height: 375px)
+{
+	nav ul li
+	{
+		line-height: 1.333;
+	}
+}

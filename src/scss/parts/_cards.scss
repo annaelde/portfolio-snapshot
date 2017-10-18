@@ -1,0 +1,57 @@
+.card-holder
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.card
+{
+	@include shadow(1);
+	display: inline-block;
+	flex-grow: 1;
+	margin: 1em;
+}
+
+.card--border
+{
+	border: 3px solid $c_tertiary;
+}
+
+.card--small
+{
+	max-width: scale(5) * 3em;
+	min-width: scale(5) * 3em;
+}
+
+.card__caption
+{
+	font-size: $s_paragraph;
+}
+
+.card__content
+{
+	padding: scale(-1) * 1em;
+}
+
+.card__list
+{
+	@include list-bullet;
+}
+
+.card__list--two-col
+{
+	@include list-two-col(scale(1) * 1em);
+}
+
+.card__heading
+{
+	background: $c_tertiary;
+	padding: scale(-1) * 1em;
+}
+
+.card__title
+{
+	color: $c_background;
+}

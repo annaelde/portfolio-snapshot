@@ -1,0 +1,62 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Anna Elde Codes | {% block meta-title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="description" content="{% block meta-description %}{% endblock %}">
+    <meta name="author" content="Anna Elde">
+    <meta name="robots" content="index">
+    <meta name="dcterms.rightsHolder" content="Anna Elde">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <link rel="stylesheet" href="{% static '/css/style.css' %}"> 
+    {% block styles %} {% endblock %}
+    <script defer src="{% static 'js/bundle.js' %}"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div id="title"><a href="/" tabindex="1">Anna Elde</a></div>
+            <nav role="navigation">
+                <button type="menu" title="This menu requires JavaScript." id="menu-icon" tabindex="2"><span class="button__label">Toggle Navigation Menu</span></button>
+                <ul>
+                    <li><a href="{% url 'portfolio:project_list' %}" tabindex="3">Projects</a></li>
+                    <li><a href="{% url 'blog:post_list' %}" tabindex="4">Blog</a></li>
+                    <li><a href="{% url 'contact:contact' %}" tabindex="5">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main role="main" id="barba-wrapper">
+        <div class="barba-container" data-namespace='{{ request.resolver_match.url_name }}'>
+            {% block main %} 
+            {% endblock main %} 
+        </div>
+    </main>
+
+    <footer class="column">
+        <div class="container footer__row">
+            <ul role="navigation" class="footer__nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'portfolio:project_list' %}">Projects</a></li>
+                <li><a href="{% url 'blog:post_list' %}">Blog</a></li>
+                <li><a href="{% url 'contact:contact' %}">Contact</a></li>
+            </ul>
+
+            <div class="footer__twitter">
+                {% load twitter_feed %}
+                {% tweets %}
+            </div>
+        </div>
+        <div class="footer__copyright">
+            Copyright © 2017 Anna Elde.
+        </div>
+    </footer>
+</body>
+
+</html>

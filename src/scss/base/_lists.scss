@@ -1,0 +1,76 @@
+@mixin list-plain
+{
+    list-style: none;
+}
+
+@mixin list-bullet
+{
+    list-style: none;
+
+    li::before
+    {
+        @include icon-base('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#{$c_tertiary}" stroke="#{$c_tertiary}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>');
+        padding-right: 1em;
+    }
+}
+
+@mixin list-two-col($gap)
+{
+    column-count: 2;
+    column-gap: $gap;
+
+    @include break(small)
+    {
+        column-gap: 0.8 * $gap;
+    }
+
+    @include break(tiny)
+    {
+        column-gap: 0.6 * $gap;
+    }
+}
+
+@mixin list-circled
+{
+    list-style-position: inside;
+    margin: 0 0 scale(0) * 1rem 0;
+    padding: 0 scale(1) * 1rem;
+
+    li
+    {
+        counter-increment: item;
+        list-style-type: none;
+        margin: .7em 0;
+        padding-left: scale(0) * 1em;
+        position: relative;
+
+        &::before
+        {
+            background: $c_primary;
+            border-radius: 2em;
+            color: $c_background;
+            content: counter(item);
+            font-size: scale(-1) * 1rem;
+            font-weight: bold;
+            height: 2em;
+            left: 0;
+            line-height: 2em;
+            margin-top: -1em;
+            position: absolute;
+            text-align: center;
+            top: (0.7em + 0.5em);
+            transition: all .3s ease-out;
+            width: 2em;
+        }
+    }
+}
+
+//////////////
+// Classes //
+////////////
+
+ul.plain, ol.plain
+{
+    @include list-plain;
+    padding: 0;
+}

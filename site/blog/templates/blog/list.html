@@ -1,0 +1,110 @@
+{% extends 'aec/base.html' %} 
+
+{% block meta-title %}
+Blog
+{% endblock %}  
+{% block meta-description %}
+Posts about web development, programming, and technology.
+{% endblock %}
+
+{% block main %}
+
+{% if tag_slug %}
+<div class="heading">
+    {% if tag_name %}
+    <h1 class="container">Tagged with {{ tag_name }}</h1>
+    {% else %}
+    <h1 class="container">Tag Not Found!</h1>
+    {% endif %}
+</div>
+{% else %}
+<div class="heading">
+    <h1 class="container">Blog</h1>
+</div>
+{% endif %}
+
+{% comment %} Display post list. {% endcomment %}
+{% if post_list %}
+<div class="container post-list--vert">
+
+    {% for post in post_list %}
+    <div class="post-list__item post-list__item--full">
+
+        <a href="{% url 'blog:post_detail' post.slug %}" class="post-list__heading post-list__heading--full">
+            <img src="{{ post.default_banner.media_file.url }}" alt="{{ post.title }}" />
+        </a>
+        
+        <div class="post-list__meta">
+            <span class="post-list__author"><span class="icon__label">Written by </span>{{ post.author.first_name }} {{ post.author.last_name }}</span>
+            <time class="post-list__time"><span class="icon__label">Published on </span>{{ post.published_on|date:"F j Y" }}</time>
+            <a class="post-list__comment-link" href="{% url 'blog:post_detail' post.slug %}#comments"><span class="post-list__comment-count disqus-comment-count" data-disqus-identifier="{{ post.slug }}"></span><span class="icon__label"> Comments</span></a>
+        </div>
+        <p class="post-list__summary">{{ post.snippet }}</p>
+    </div>
+    {% endfor %}
+
+</div>
+{% else %}
+<p class="container">No posts were found.</p>
+{% endif %} 
+
+
+{% comment %} Pagination section {% endcomment %}
+<div class="pagination">
+    {% if page_obj.has_previous %}
+        {% if tag_slug %}
+        <a class="pagination__nav pagination__nav--previous" href="?tag={{ tag_slug }}&page={{ page_obj.previous_page_number }}"></a>
+        {% else %}
+        <a class="pagination__nav pagination__nav--previous" href="?page={{ page_obj.previous_page_number }}"></a>
+        {% endif %}
+    {% else %}
+    <a class="pagination__nav pagination__nav--previous--disabled"></a>
+    {% endif %}
+
+    <ul class="pagination__numbers">
+        {% for i in paginator.page_range %}
+            {% if page_obj.number == i %}
+            <li class="pagination__number pagination__number--current">{{ i }}</li>
+            {% else %}
+                {% if tag_slug %}
+                <li class="pagination__number"><a href="?tag={{ tag_slug }}&page={{ i }}">{{ i }}</a></li>
+                {% else %}
+                <li class="pagination__number"><a href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    {% if page_obj.has_next %}
+        {% if tag_slug %}
+        <a class="pagination__nav pagination__nav--next" href="?tag={{ tag_slug }}&page={{ page_obj.next_page_number }}"></a>
+        {% else %}
+        <a class="pagination__nav pagination__nav--next" href="?page={{ page_obj.next_page_number }}"></a>
+        {% endif %}
+    {% else %}
+    <a class="pagination__nav pagination__nav--next--disabled"></a>
+    {% endif %}
+    
+</div>
+
+{% comment %} Display tags {% endcomment %}
+<div id="tag-cloud" class="container card-holder">
+    <div class="card">
+        <div class="tag-cloud__heading card__heading">
+            <h3 class="card__title">Browse by Tag</h3>
+            <button role="button" class="toggle" title="Toggle Tags" aria-label="Toggle Tag List" style="display: none;">
+                <svg class="toggle__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="transparent" stroke="#fafafa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="5" width="22" height="14" rx="7" ry="7"></rect>
+                <circle class="toggle__switch" cx="8" cy="12" r="3" transform="translate(8 0)"></circle>
+                </svg>
+                <span class="button__label">Toggle Tag List</span>
+            </button>
+        </div>
+        <div class="card__content tag-list">
+        {% for tag in tag_cloud %}
+            <a class="tag-list__tag" href="{% url 'blog:post_list' %}?tag={{ tag.slug }}">{{ tag.name }}</a>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock main %}

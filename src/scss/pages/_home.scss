@@ -1,0 +1,123 @@
+.intro
+{
+	display: flex;
+	flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+}
+
+.intro__skill-set
+{
+	margin-bottom: scale(-1) * 1em;
+}
+
+.intro__post-script-icon
+{
+	cursor: default;
+	float: right;
+	font-size: scale(5) * 1em;
+	margin: scale(-1) * 1rem scale(3) * 1rem 0 scale(-1) * 1rem;
+    
+    @include break(medium)
+	{
+		display: none;
+	}
+}
+
+.intro__resume-button
+{
+    @include button-lines-meeting($c_primary, $c_secondary, 3px);
+	@include type-large;
+	float: right;
+	margin: scale(1) * 1rem 1rem scale(1) * 1rem scale(3) * 1rem;
+	text-align: center;
+	transition: color .3s;
+	width: scale(5) * 1em;
+
+	@include tweak(small, 100)
+	{
+		box-sizing: border-box;
+		float: none;
+		margin: 1rem;
+		width: calc(100% - 2rem);
+	}
+
+	a
+	{
+		color: $c_primary;
+		padding: scale(-1) * 1rem scale(3) * 1rem scale(-1) * 1rem scale(-1) * 1rem;
+		transition: color .3s;
+
+		&::after
+		{
+			background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_primary}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>');
+			background-size: 1em;
+			bottom: .9em;
+			content: '';
+			font-size: 1em;
+			height: 1em;
+			position: absolute;
+			right: calc(50% - 2.3em);
+			transition: background-image .3s;
+			width: 1em;
+			@include break(small)
+			{
+				right: calc(50% - 2.3em);
+			}
+		}
+
+		&:visited
+		{
+			color: $c_primary;
+		}
+
+		&:hover
+		{
+			color: $c_secondary;
+
+			&::after
+			{
+				background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_secondary}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>');
+			}
+		}
+	}
+}
+
+.intro__pic
+{
+	background: $c_background;
+	flex: 0 0 auto;
+	height: 250px;
+	margin-left: scale(3) * 1em;
+	position: relative;
+	right: 0;
+	top: 0;
+	transition: top .5s cubic-bezier(0.23, 1, 0.32, 1), right .5s cubic-bezier(0.23, 1, 0.32, 1), width .5s, height .5s;
+	width: 250px;
+    @include border-circle;
+    
+    @include break(medium)
+	{
+		height: 200px;
+		margin-bottom: scale(0) * 1em;
+		margin-left: 0;
+		position: absolute;
+		right: 30px;
+		top: -200px;
+		width: 200px;
+		z-index: $z_heading__flair;
+	}
+    
+    @include tweak(small, 120)
+	{
+		height: auto;
+		top: -170px;
+		width: 150px;
+	}
+    
+    @include break(small)
+	{
+		top: -130px;
+		width: 100px;
+	}
+}

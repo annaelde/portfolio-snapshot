@@ -1,0 +1,48 @@
+#tag-cloud
+{
+	@include container-page;
+}
+
+.tag-cloud__heading
+{
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	z-index: $z_button;
+}
+
+#tag-cloud .tag-list
+{
+	margin: 0;
+	overflow-y: hidden;
+	padding: scale(-1) * 1em;
+	position: relative;
+	z-index: $z_page;
+}
+
+.tag-list
+{
+	@include container-paragraph;
+
+	h4
+	{
+		@include type-regular;
+		display: inline-block;
+		font-weight: bold;
+		margin-right: scale(0) * 3px;
+		padding: scale(0) * 3px 0;
+	}
+}
+
+.tag-list__tag
+{
+	@include type-regular;
+	display: inline-block;
+	margin-right: scale(0) * 3px;
+	padding: scale(0) * 3px;
+
+	&::before
+	{
+        @include icon-tag($c_primary);
+	}
+}

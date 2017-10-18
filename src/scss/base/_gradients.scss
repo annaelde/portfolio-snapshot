@@ -1,0 +1,4 @@
+@mixin gradient-secondary-light
+{
+   background: linear-gradient(135deg, adjust-hue($c_secondary_light, -1) 0%, adjust-hue($c_secondary, 2) 50%, adjust-hue($c_secondary, 3) 100%);
+}

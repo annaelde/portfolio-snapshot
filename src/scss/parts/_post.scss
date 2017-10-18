@@ -1,0 +1,70 @@
+// These placeholders are for both posts and projects to share for their "content" sections
+%item
+{
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	padding-top: scale(0) * 1rem;
+}
+
+%item__content
+{
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	max-width: 100%;
+	width: 100%;
+
+	p, ul, ol, h1, h2, h3, h4, h5
+	{
+		@include container-paragraph;
+	}
+
+	h2
+	{
+		color: $c_tertiary;
+		font-size: $s_h1;
+	}
+
+	h3
+	{
+		color: $c_secondary_dark;
+		font-size: $s_h2;
+	}
+
+	h4
+	{
+		color: $c_primary;
+		font-size: $s_h3;
+	}
+
+	h5
+	{
+		color: $c_heading_s;
+		font-size: $s_h3;
+	}
+
+	ol
+	{
+        @include list-circled;
+	}
+}
+
+%item__banner
+{
+	align-items: center;
+	display: flex;
+	height: auto;
+	margin-bottom: scale(-1) * 1rem;
+	max-height: 80vh;
+	overflow: hidden;
+	padding: 0;
+	width: 100%;
+
+	img
+	{
+		height: auto;
+		width: 100%;
+	}
+}

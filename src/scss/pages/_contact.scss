@@ -1,0 +1,161 @@
+#contact
+{
+	width: 100%;
+	@include container-paragraph;
+	@include break(medium)
+	{
+		max-width: 100%;
+    }
+    @include break(small)
+    {
+        padding: 0;
+    }
+}
+
+.contact__fields
+{
+	margin: scale(-1) * 1rem 0;
+    width: 100%;
+    position: relative;
+	@include shadow(1);
+
+	@include break(medium)
+	{
+		max-width: 100%;
+	}
+}
+
+.contact__footer
+{
+	display: flex;
+	flex-direction: row;
+}
+
+.contact__fields label
+{
+	@include type-large;
+	background: $c_primary;
+	border: 2px solid $c_primary;
+	box-sizing: border-box;
+	color: $c_background;
+	display: block;
+	font-weight: 900;
+	padding: 0.333 * 1rem;
+	padding-left: scale(-1) * 1rem;
+}
+
+.contact__fields input[type="text"]
+{
+	@include type-regular;
+	border: 1px solid $c_background;
+	box-sizing: border-box;
+	padding-bottom: 0.333 * 1rem;
+	padding-left: scale(-1) * 1rem;
+	padding-top: 0.333 * 1rem;
+	width: 100%;
+}
+
+.contact__fields input[type="email"]
+{
+	@include type-regular;
+	border: 1px solid $c_background;
+	box-sizing: border-box;
+	padding-bottom: 0.333 * 1rem;
+	padding-left: scale(-1) * 1rem;
+	padding-top: 0.333 * 1rem;
+	width: 100%;
+}
+
+.contact__fields textarea
+{
+	@include type-regular;
+	border: 1px solid $c_background;
+	box-sizing: border-box;
+	max-width: $large_width;
+	padding-bottom: 0.333 * 1rem;
+	padding-left: scale(-1) * 1rem;
+	padding-top: 0.333 * 1rem;
+	width: 100%;
+}
+
+.contact__submit
+{
+	@include type-large;
+	background: $c_primary;
+	border: 1px solid $c_primary;
+	box-sizing: border-box;
+	color: $c_background;
+	cursor: pointer;
+	display: block;
+	font-weight: 900;
+	margin: 0;
+	padding: 0.333 * 1rem;
+	padding-left: scale(-1) * 1rem;
+	transition: 0.8s all ease;
+	width: 100%;
+
+	&:hover
+	{
+		background: $c_primary_dark;
+		transition: 0.3s all ease;
+	}
+}
+
+.contact__loading
+{
+    @include icon-loader($c_white);
+    display: none;
+    height: 2em;
+    width: 2em;
+    font-size: 2em;
+    background-size: 2em;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+#contact #status
+{
+	@include type-regular;
+	box-sizing: border-box;
+	font-weight: 900;
+	padding: 0.333 * 1rem;
+	padding-left: scale(-1) * 1rem;
+	cursor: default;
+}
+
+#contact #status.hide
+{
+	display: none;
+}
+
+#contact #status.show
+{
+	display: static;
+}
+
+#contact #status.success
+{
+	color: green;
+}
+
+#contact #status.error
+{
+	color: red;
+}
+
+.contact__backup
+{
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+@include break(small)
+{
+    .g-recaptcha
+    {
+        transform: scaleX(0.77) scaleY(0.77);
+        transform-origin: 0 0;
+    }
+}

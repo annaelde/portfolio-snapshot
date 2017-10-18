@@ -1,0 +1,176 @@
+//////////////////////////////
+// POST LIST GALLERY VIEWS //
+////////////////////////////
+
+.project-list__list-heading
+{
+	@include container-page;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	h1
+	{
+		color: $c_background;
+		line-height: 1.333;
+		padding: 0;
+	}
+}
+
+.project-list--vert
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.project-list--horiz
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	@include break(medium)
+	{
+		flex-wrap: wrap;
+	}
+}
+
+//////////////////////////
+// BASE POST LIST VIEW //
+////////////////////////
+
+.project-list__item
+{
+	@include shadow(1);
+	display: flex;
+	flex-direction: column;
+    margin: 1em;
+    padding-bottom: scale(0) * 1em;
+}
+
+.project-list__heading
+{
+	background: $c_tertiary;
+	padding: scale(0) * 1rem;
+}
+
+.project-list__title
+{
+	color: $c_background;
+	line-height: 1.333;
+}
+
+.project-list__summary
+{
+	padding: 0 scale(0) * 1rem;
+}
+
+.project-list__meta
+{
+	@include type-regular;
+    padding: scale(0) * 1rem;
+    
+    time
+    {
+        display: inline-block; 
+        &::before
+        {
+            @include icon-calendar($c_tertiary);
+        }
+    }
+}
+
+.project-list__subtitle
+{
+    font-size: scale(0) * 0.9rem;
+    color: $c_background;
+	line-height: 1.333;
+}
+
+.project-list__details
+{
+	@include tweak(medium, -150)
+	{
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.project-list__thumbnail
+{
+	float: right;
+	margin: scale(0) * 1em scale(0) * 1em 0 scale(0) * 1em;
+
+	img
+	{
+		@include shadow(1);
+		@include break(small)
+		{
+			width: 90%;
+		}
+	}
+	@include tweak(medium, -150)
+	{
+		align-self: center;
+		float: none;
+	}
+	@include break(small)
+	{
+		align-items: flex-start;
+		display: flex;
+		justify-content: center;
+	}
+}
+
+.project-list__tags::before
+{
+    @include icon-tag($c_tertiary);
+}   
+
+.project-list__repo
+{
+    &::before
+    {
+        @include icon-base('<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#{$c_tertiary}" stroke-width="2px"><circle cx="18.273" cy="4.448" r="3"/><circle cx="7.337" cy="19.595" r="3" /><circle cx="7.337" cy="4.448" r="3" /><path d="M7.314,7.49l0.041,8.908" /><path d="M7.434,16.473c0.161,-0.055 0.002,-0.342 0.031,-0.509c0.031,-0.177 0.074,-0.354 0.148,-0.517c0.395,-0.865 1.196,-1.408 2.075,-1.716c2.243,-0.784 4.872,-0.066 6.912,-1.449c0.998,-0.677 1.511,-1.784 1.726,-2.928c0.055,-0.291 0.077,-0.588 0.085,-0.884c0.008,-0.287 -0.014,-0.574 -0.037,-0.861"/></svg>');
+        transition: background-image .3s;
+    }
+
+    &:visited::before
+    {
+        background-image: url('<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#{$c_tertiary_dark}" stroke-width="2px"><circle cx="18.273" cy="4.448" r="3"/><circle cx="7.337" cy="19.595" r="3" /><circle cx="7.337" cy="4.448" r="3" /><path d="M7.314,7.49l0.041,8.908" /><path d="M7.434,16.473c0.161,-0.055 0.002,-0.342 0.031,-0.509c0.031,-0.177 0.074,-0.354 0.148,-0.517c0.395,-0.865 1.196,-1.408 2.075,-1.716c2.243,-0.784 4.872,-0.066 6.912,-1.449c0.998,-0.677 1.511,-1.784 1.726,-2.928c0.055,-0.291 0.077,-0.588 0.085,-0.884c0.008,-0.287 -0.014,-0.574 -0.037,-0.861"/></svg>');
+    }
+
+    &:hover::before
+    {
+        background-image: url('<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#{$c_tertiary_light}" stroke-width="2px"><circle cx="18.273" cy="4.448" r="3"/><circle cx="7.337" cy="19.595" r="3" /><circle cx="7.337" cy="4.448" r="3" /><path d="M7.314,7.49l0.041,8.908" /><path d="M7.434,16.473c0.161,-0.055 0.002,-0.342 0.031,-0.509c0.031,-0.177 0.074,-0.354 0.148,-0.517c0.395,-0.865 1.196,-1.408 2.075,-1.716c2.243,-0.784 4.872,-0.066 6.912,-1.449c0.998,-0.677 1.511,-1.784 1.726,-2.928c0.055,-0.291 0.077,-0.588 0.085,-0.884c0.008,-0.287 -0.014,-0.574 -0.037,-0.861"/></svg>');
+    }
+}
+
+.project-list__button
+{
+    @include type-regular;
+    @include button-base($c_primary, $c_background, $c_background, $c_primary);
+    display: inline-block;
+    padding: 1.333rem scale(0) * 1rem;
+    margin: 0 scale(0) * 1rem 0;
+    border: 3px solid $c_primary;
+}
+
+///////////////////////////////////
+// SINGLE (DETAIL VIEW) PROJECT //
+/////////////////////////////////
+
+.project
+{
+    @extend %item;
+}
+
+.project__content
+{
+    @extend %item__content;
+}
+
+.project__banner
+{
+    @extend %item__banner;
+}

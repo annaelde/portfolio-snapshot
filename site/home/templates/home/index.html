@@ -1,0 +1,91 @@
+{% extends 'aec/base.html' %} 
+{% load staticfiles %}
+
+{% block meta-title %}
+Home
+{% endblock meta-title %} 
+{% block meta-description %}
+I'm a web developer in the Orlando area. Check out my projects and read my blog here.
+{% endblock meta-description %} 
+
+
+{% block main %}
+
+{% load solo_tags %}
+{% get_solo 'home.Introduction' as intro %} 
+
+<div class="heading">
+    <h1 class="container">Hello!</h1>
+</div>
+
+<div class="container center justify-between">
+
+    <div class="intro">
+        <div>
+        {{ intro.bio_markdown|safe }}
+        </div>
+        <img class="intro__pic" src="{% static '/images/me.jpg' %}" alt="A portrait of myself." height="250" width="250" />
+    </div>
+    
+    {% if skill_sets %}
+    <div class="row card-holder intro__skill-set">
+        {% for skill_set in skill_sets %}
+        <div class="card">
+            <div class="card__heading">
+                <h2 class="card__title">{{ skill_set.title }}</h2>
+            </div>
+            <div class="card__content">
+                <ul class="card__list card__list--two-col">
+                    {% for skill in skill_set.skills %}
+                    <li>{{ skill }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="intro__resume-button">
+        <a class="no-barba" href="{% static '/files/anna-elde-resume.pdf' %}">Resumé</a>
+    </div>
+
+    {% if intro.post_script %}
+    <div class="intro__post-script">
+        {{ intro.ps_markdown|safe }}
+    </div>
+    {% endif %}
+
+</div>
+
+<div class="heading">
+    <h1 class="container">Recent Posts</h1>
+</div>
+
+{% if post_list %}
+<div class="container post-list--horiz">
+    {% for post in post_list %}
+    <div class="post-list__item post-list__item--small">
+
+        <div class="post-list__heading">
+            <a href="{% url 'blog:post_detail' post.slug %}">
+                <h2 class="post-list__title">{{ post.title }}</h2>
+            </a>
+        </div>
+
+        <div class="post-list__meta ">
+            <span class="post-list__author"><span class="icon__label">Written by </span>{{ post.author.first_name }} {{ post.author.last_name }}</span>
+            <time class="post-list__time"><span class="icon__label">Published on </span>{{ post.published_on|date:"F j Y" }}</time>
+            <a class="post-list__comment-link" href="{% url 'blog:post_detail' post.slug %}#comments" title="View Comments"><span class="post-list__comment-count post-list__comment-count--small disqus-comment-count" data-disqus-identifier="{{ post.slug }}"></span><span class="button__label"> Comments</span></a>
+        </div>
+
+        <p class="post-list__summary">{{ post.snippet }}</p>
+
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p class="container">No posts are available.</p>
+{% endif %} 
+
+{% endblock main %}

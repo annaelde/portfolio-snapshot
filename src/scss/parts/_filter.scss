@@ -1,0 +1,166 @@
+/////////////
+// Filter //
+///////////
+
+.filter
+{
+	position: relative;
+	z-index: $z_button;
+}
+
+.filter__button
+{
+    box-shadow: 0 1px 3px rgba($c_black, 0.12), 0 1px 2px rgba($c_black, 0.24);
+	background: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_secondary}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>') $c_background;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 4.5rem;
+	border: none;
+	border-radius: 50%;
+	color: $c_background;
+	cursor: pointer;
+	height: 7.4rem;
+	padding: 0;
+	transition: all .3s;
+	width: 7.4rem;
+    z-index: $z_button;
+	transition: box-shadow .3s, transform .3s;
+
+	&:hover
+	{
+		box-shadow: 0 6px 0px rgba($c_black, 0.14);
+		transform: translateY(-3px);
+	}
+
+	&:active
+	{
+		box-shadow: 0 3px 0px rgba($c_black, 0.14);
+		transform: translateY(-3px);
+	}
+}
+
+.filter__button--opened
+{
+	border-radius: 0 50% 50% 0;
+	box-shadow: 0 3px 0px rgba($c_black, 0.14);
+	position: relative;
+	z-index: $z_menu_item;
+
+	&:hover, &:active
+	{
+		box-shadow: 0 6px 0px rgba($c_black, 0.14);
+		transform: none;
+	}
+}
+
+.filter__button--active
+{
+	background: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_primary}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>'), $c_background;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 4.5rem;
+}
+
+.filter__options
+{
+    @include list-two-col(1rem);
+	box-shadow: 0 10px 3px rgba($c_black, 0.19), 0 6px 3px rgba($c_black, 0.23);
+	backface-visibility: hidden;
+	background: $c_background;
+	border-radius: 0;
+	left: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	transform: translateX(-99.75%) scaleY(1) scaleX(1);
+	transition: all .3s;
+    z-index: $z_menu;
+    
+    @include break(tiny)
+    {  
+        columns: 1;
+    }
+}
+
+.filter__options--closed
+{
+	border-radius: 50%;
+	overflow: hidden;
+    transform-origin: top;
+	transform: translateX(-40%) scaleY(0) scaleX(0);
+	z-index: $z_page;
+}
+
+.filter__option
+{
+	box-sizing: border-box;
+	color: $c_secondary;
+	cursor: pointer;
+	display: inline-block;
+	padding-left: 2em;
+	padding-right: 1em;
+	position: relative;
+	transition: none;
+	width: 100%;
+
+	&:hover, &:active
+	{
+		background: darken($c_background, 10%);
+		color: darken($c_secondary, 10%);
+	}
+
+	&:visited
+	{
+		color: $c_secondary;
+	}
+}
+
+.filter__option::before
+{
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 1em;
+	content: '';
+	height: 1em;
+	left: 0;
+	padding-left: 1em;
+	position: absolute;
+	top: calc(50% - 0.5em);
+	transition: none;
+	width: 1em;
+}
+
+.filter__option--inactive
+{
+	&::before
+	{
+		background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_secondary}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>');
+	}
+
+	&:hover::before
+	{
+		background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{darken($c_secondary, 10%)}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>');
+	}
+}
+
+.filter__option--active
+{
+	color: $c_primary;
+
+	&::before
+	{
+		background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{$c_primary}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>');
+	}
+
+	&:visited, &:hover
+	{
+		color: $c_primary;
+	}
+
+	&:hover::before
+	{
+		background-image: url('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#{darken($c_primary, 10%)}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>');
+	}
+}

@@ -1,0 +1,81 @@
+// Colors
+$c_white: #fafafa;
+$c_black: #464655;
+$c_grey : lighten($c_black, 50%);
+$c_primary: #db3069;
+$c_primary_light: lighten($c_primary, 10%);
+$c_primary_dark: darken($c_primary, 10%);
+$c_secondary: #4ecdc4;
+$c_secondary_light: lighten($c_secondary, 10%);
+$c_secondary_dark: darken($c_secondary, 10%);
+$c_tertiary: #7e50be;
+$c_tertiary_light: lighten($c_tertiary, 10%);
+$c_tertiary_dark: darken($c_tertiary, 10%);
+
+// Body Colors
+$c_background: $c_white;
+
+// Font Colors
+$c_title: $c_primary;
+$c_title_hover: $c_secondary;
+$c_nav: $c_primary;
+$c_nav_active: $c_secondary;
+$c_nav_visited: $c_primary;
+$c_nav_hover: $c_secondary;
+$c_drw: $c_white;
+$c_drw_active: $c_secondary_light;
+$c_drw_visited: $c_white;
+$c_drw_hover: $c_secondary_light;
+$c_heading_l: $c_secondary;
+$c_heading_s: $c_tertiary;
+$c_paragraph: $c_black;
+$c_link: $c_tertiary;
+$c_link_active: $c_tertiary_light;
+$c_link_visited: $c_tertiary_dark;
+$c_link_hover: $c_tertiary_light;
+
+// Font Families
+$font_title: pacifico, arial, sans-serif;
+$font_heading: arcon, arial, sans-serif;
+$font_paragraph: arcon, arial, sans-serif;
+
+// Font Sizes
+$s_root: 62.5%; // 10px 
+$s_title: scale(4) * 1em;
+$s_nav: scale(3) * 1em;
+$s_h1: scale(3) * 1em;
+$s_h2: scale(2) * 1em;
+$s_h3: scale(1) * 1em;
+$s_h4: scale(0) * 1em;
+$s_paragraph: scale(0) * 1em;
+$s_small: scale(-1) * 1em;
+
+// Devices
+$huge_width: calc-em(1280) * 1em;
+$large_width: calc-em(1280) * 1em;
+$medium_width: calc-em(1000) * 1em;
+$small_width: calc-em(600) * 1em;
+$tiny_width: calc-em(360) * 1em;
+$huge_device: "screen and (min-width: #{$huge_width})";
+$large_device: "screen and (max-width: #{$large_width})";
+$medium_device: "screen and (max-width: #{$medium_width})";
+$small_device: "screen and (max-width: #{$small_width})";
+$tiny_device: "screen and (max-width: #{$tiny_width})";
+
+// Z-Indicies
+$z_hidden: -1;
+
+$z_page: 0;
+$z_card: 1;
+$z_image: 1;
+
+$z_button: 1;
+$z_menu: 2;
+$z_menu_item: 3;
+
+$z_header: 4;
+$z_heading: 4;
+$z_heading__flair: 5;
+$z_header--sticky: 6;
+
+$z_drawer: 8;

@@ -1,0 +1,57 @@
+{% if project_list %}
+{% for project in project_list %}
+<div class="project-list__item">
+
+    <div class="project-list__heading">
+        {% comment %} Disable PJAX navigation if it's an 'external' link {% endcomment %}
+        {% if project.content %}
+            <a href="{% url 'portfolio:project_detail' project.slug %}">
+        {% elif project.external_url %}
+            <a class="no-barba" href="{{ project.external_url }}">
+        {% else %}
+            <a class="no-barba" href="{% url 'portfolio:project_detail' project.slug %}">
+        {% endif %}
+            <h2 class="project-list__title">{{ project.title }}</h2>
+            <h3 class="project-list__subtitle">{{ project.subtitle }}</h3>
+        </a>
+    </div>
+
+    <div class="project-list__details">
+
+        {% if project.thumbnail %}
+            {% if project.content %}
+            <a class="project-list__thumbnail" href="{% url 'portfolio:project_detail' project.slug %}">
+            {% elif project.external_url %}
+                <a class="project-list__thumbnail" href="{{ project.external_url }}">
+            {% else %}
+                <a class="project-list__thumbnail no-barba" href="{% url 'portfolio:project_detail' project.slug %}">
+            {% endif %}
+        <img src="{{ project.thumbnail.media_file.url }}" alt="{{ project.thumbnail.alt_text }}" title="{{ project.thumbnail.title }}"></a>
+        {% endif %}
+
+        <div class="project-list__meta">
+            <time><span class="icon__label">Completed in </span>{{ project.date|date:"F Y" }}</time>
+            {% if project.tags.all %}
+            <span class="project-list__tags"><span class="icon__label">Tagged with </span>{{ project.tags.all | join:", " }}</span>
+            {% endif %}
+            {% if project.repository %}
+               <a href="{{ project.repository }}" class="project-list__repo">Repository</a>
+            {% endif %}
+        </div>
+        <div class="project-list__summary">{{ project.snippet_formatted|safe }}</div>
+        
+        {% if project.content %}
+            <a class="project-list__button" href="{% url 'portfolio:project_detail' project.slug %}">
+        {% elif project.external_url %}
+            <a class="project-list__button" href="{{ project.external_url }}">
+        {% else %}
+            <a class="project-list__button no-barba" href="{% url 'portfolio:project_detail' project.slug %}">
+        {% endif %}
+            View Project</a>
+    </div>
+
+</div>
+{% endfor %}
+{% else %}
+<p>No projects were found.</p>
+{% endif %}

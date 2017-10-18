@@ -1,0 +1,42 @@
+main
+{
+	flex: 1 1 auto;
+	min-height: .1px;
+}
+
+main .container
+{
+	padding: scale(1) * 1rem;
+}
+
+main.sticky
+{
+	@media screen and (min-height: 400px)
+	{
+		margin-top: 77px;
+		@include break(small)
+		{
+			margin-top: 60px;
+		}
+	}
+}
+
+.heading
+{
+	background: $c_heading_l;
+	padding: scale(0) * 1rem;
+	z-index: $z_heading;
+
+	h1.container
+	{
+		color: $c_background;
+		line-height: 1.333;
+		padding: 0;
+	}
+
+	.subheading
+	{
+		color: $c_background;
+		padding: 0;
+	}
+}

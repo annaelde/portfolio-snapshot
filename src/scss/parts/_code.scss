@@ -1,0 +1,27 @@
+pre
+{
+    @include container-paragraph;
+    font-family: monospace;
+	font-size: 2rem;
+	padding: scale(-1) * 1rem;
+    white-space: pre;
+    overflow-x: auto;
+    z-index: $z_card;
+    margin: 0;
+}
+
+.codehilite
+{
+	border: 0px solid #000000;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    margin-bottom: scale(-1) * 1em;
+    min-width: 100%;
+    width: 100%;
+    
+	@include break(large)
+	{
+		max-width: 100%;
+	}
+}

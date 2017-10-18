@@ -1,0 +1,159 @@
+////////////////////////
+// FONT DECLARATIONS //
+//////////////////////
+@font-face
+{
+	font-family: pacifico;
+	src: url("/static/fonts/pacifico/Pacifico-Min.ttf") format('truetype');
+}
+
+@font-face
+{
+	font-family: arcon;
+	src: url("/static/fonts/arcon/Arcon-Regular.otf") format('opentype');
+}
+
+/////////////
+// MIXINS //
+///////////
+@mixin type-regular
+{
+    font-family: $font_paragraph;
+    font-size: $s_paragraph;
+	line-height: scale(-1);
+}
+
+@mixin type-regular--packed
+{
+    font-family: $font_paragraph;
+    font-size: $s_paragraph;
+	line-height: 1.333;
+}
+
+@mixin type-small
+{
+    font-family: $font_paragraph;
+    font-size: $s_small;
+	line-height: 1.333;
+}
+
+@mixin type-large
+{
+    font-family: $font_heading;
+    font-size: $s_h3;
+	line-height: scale(-1);
+}
+
+@mixin type-mono
+{
+    font-family: Consolas, monospaced;
+    font-size: $s_paragraph;
+	line-height: 1.333;
+}
+
+@mixin bold
+{
+    font-weight: 900;
+}
+
+//////////////////////////
+// Specific Tag Styles //
+////////////////////////
+h1, h2, h3, h4, h5
+{
+    font-family: $font_heading;
+    line-height: scale(-1);
+	margin: 0;
+
+	a
+	{
+		text-decoration: none;
+	}
+}
+
+h1
+{
+	color: $c_heading_l;
+	font-size: $s_h1;
+}
+
+h2
+{
+	color: $c_heading_s;
+	font-size: $s_h2;
+}
+
+h3
+{
+	color: $c_heading_s;
+	font-size: $s_h3;
+}
+
+h4
+{
+	color: $c_heading_s;
+	font-size: $s_h4;
+}
+
+h5
+{
+    color: $c_paragraph;
+    font-size: $s_h4;
+}
+
+main p
+{
+    @include type-regular;
+    max-width: 50ch;
+    width: 100%;
+	padding-bottom: 1em;
+}
+
+main a
+{
+	color: $c_link;
+	text-decoration: none;
+	transition: color .3s;
+
+	&:visited
+	{
+		color: $c_link_visited;
+	}
+
+	&:hover
+	{
+		color: $c_link_hover;
+	}
+
+	&:active
+	{
+		color: $c_link_active;
+	}
+}
+
+main ul, main ol
+{
+	@include type-regular;
+	padding-bottom: 1em;
+}
+
+main dl
+{
+	@include type-regular;
+	padding-bottom: 1em;
+}
+
+main blockquote
+{
+	@include shadow(1);
+	border-left: 6px solid $c_secondary;
+	padding: scale(0) * 1em scale(0) * 1em 0;
+	margin: 0 1em scale(0) * 1rem 1em;
+    max-width: calc(100% - 2em);
+    box-sizing: border-box;
+
+	div.citation
+	{
+		@include type-small;
+	}
+}

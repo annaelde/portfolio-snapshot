@@ -1,0 +1,32 @@
+{% extends 'aec/base.html' %}
+
+{% block meta-title %}
+{{ project.title }}
+{% endblock %}
+
+{% block meta-description %}
+{{ project.description }}
+{% endblock %}
+
+{% block main %}
+
+<div class="heading">
+    <h1 class="container blog">{{ project.title }}</h1>
+
+    <h4 class="subheading container"> 
+        {% if project.subtitle %}
+            {{ project.subtitle }}
+            <i class="bullet"></i>
+        {% endif %}
+        <time>{{ project.date|date:"F Y" }}</time>
+    </h4>
+    
+</div>
+
+<div class="project">
+    <div class="project__content">
+        {{ project.content_formatted|safe }}
+    </div>
+</div>
+
+{% endblock main %}

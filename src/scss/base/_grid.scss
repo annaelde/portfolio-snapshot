@@ -1,0 +1,67 @@
+/////////////
+// MIXINS //
+///////////
+
+@mixin container-page
+{
+    margin: 0 auto;
+    max-width: 120rem;
+}
+
+@mixin container-paragraph
+{
+	max-width: 79.3rem;
+    width: 79.3rem;
+    
+    @include tweak(medium, -120)
+    {
+        box-sizing: border-box;
+        padding-left: scale(0) * 1rem;
+        padding-right: scale(0) * 1rem;
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@mixin grid-column
+{
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin grid-row
+{
+    display: flex;
+    flex-direction: row;
+}
+
+//////////////
+// CLASSES //
+////////////
+
+.row
+{
+	display: flex;
+	flex-direction: row;
+
+	&.center
+	{
+		align-items: center;
+	}
+}
+
+.column
+{
+	display: flex;
+	flex-direction: column;
+
+	&.center
+	{
+		align-items: center;
+	}
+}
+
+.justify-between
+{
+	justify-content: space-between;
+}

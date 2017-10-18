@@ -1,0 +1,125 @@
+########
+# IDES #
+########
+
+# Visual Studio Code
+.stylelintrc.json
+stylelint.config.js
+.vscode/
+
+# Visual Studio
+.vs/
+*.[Oo]bj
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+ipch/
+obj/
+[Dd]ebug*/
+
+# Sublime
+*.sublime-workspace
+*.sublime-project
+
+# Other
+nbproject
+.~lock.*
+.buildpath
+.idea
+.project
+.settings
+
+###################
+# Compiled Source #
+###################
+# Build
+build/
+build.zip
+
+# CSS
+site/static/css/style.css
+
+# SCSS
+.sass-cache/
+*.css.map
+
+# JavaScript
+site/static/js/bundle.js
+*.js.map
+
+# Python
+__pycache__/
+
+# Other
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+##########
+# Images #
+##########
+
+*.dmg
+*.iso
+*.jar
+graphics/
+site/media/
+
+#######
+# NPM #
+#######
+
+node_modules/
+
+##########
+# System #
+##########
+
+_notes/
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+~$*
+*.swp
+
+################
+# Pip Packages #
+################
+site/static/rest_framework/
+site/static/debug_toolbar/
+site/static/admin/
+
+##########
+# Django #
+##########
+
+site/temp/
+/.vs/slnx.sqlite
+*.un~
+site/settings/production.json
+site/static/admin/
+
+# Server Configuration
+/config/prod
+/docker/db

@@ -1,0 +1,11 @@
+FROM python:3.6.1
+
+ENV PYTHONUNBUFFERED 1
+ARG project
+
+COPY requirements.pip .
+
+RUN pip install -r requirements.pip && \
+	mkdir $project
+
+WORKDIR $project

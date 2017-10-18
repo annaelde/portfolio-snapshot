@@ -1,0 +1,89 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <div class="container" id="disqus_thread"></div>
+    <script>
+    "use strict";
+
+    var disqus_config = function ()
+    {
+        // Disqus configuration variables
+        this.page.url = parent.window.location.href;
+        this.page.identifier = parent.window.location.pathname.replace('/blog/', '').replace('/', '');
+        this.page.title = parent.document.title.replace('Anna Elde Codes | ', '');
+
+        this.callbacks.onReady.push(function ()            
+        {
+            // Get all elements
+            var container = document.getElementById('disqus_thread');
+            var innerFrame = container.getElementsByTagName('iframe')[0];
+            var outerFrame = parent.document.getElementById('disqus_thread');
+
+            // Inner frame's bottom padding
+            var bottomPadding = 65;
+
+            // Remove margins on inner frame
+            document.body.style.margin = '0';
+
+            // Set initial height
+            outerFrame.height = parseInt(innerFrame.style.height) + bottomPadding;
+            innerFrame.style.height = '100%';
+
+            var isIE = (function ()
+            {
+                var ua = window.navigator.userAgent;
+                var edge = ua.indexOf('Edge/');
+                if (edge > 0) return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+                return false;
+            })();
+
+            if (isIE) (function ()
+            {
+                if (typeof NodeList.prototype.forEach === "function") return false;
+                NodeList.prototype.forEach = Array.prototype.forEach;
+            })();
+
+            var updateHeight = function ()
+            {
+                // Updated outer/inner frame
+                outerFrame.height = parseInt(innerFrame.style.height) + bottomPadding;
+                if (!isIE) innerFrame.style.height = '100%';
+            }
+
+            // Create mutation observer to update inner frame height/outer frame height
+            var observer = new MutationObserver(function (mutations)
+            {
+                mutations.forEach(function (mutation)
+                {
+                    if (mutation.type == 'attributes' && mutation.attributeName == 'style' && innerFrame.style.height != '100%')
+                    {
+                        updateHeight();
+                    }
+                });
+            });
+
+            // Initialize and start mutation observer
+            var config = { attributes: true, childList: false, characterData: false, attributeFilter: ['style'] };
+            observer.observe(innerFrame, config);
+        });
+    };
+
+    // Disqus scripts
+    (function ()
+    {
+        var d = document, s = d.createElement('script');
+
+        s.src = 'https://aecodes.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</body>
+
+</html>

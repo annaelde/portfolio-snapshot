@@ -1,0 +1,14 @@
+{% load twitter_feed %}
+    {% if tweets %}
+        {% for tweet in tweets %}
+        <div class="tweet">
+            <div class="tweet__heading"><a href="https://www.twitter.com/{{ tweet.user }}"><span class="tweet__handle">@{{ tweet.user }}</span></a><span class="tweet__logo"></span></div>
+            <div class="tweet__text">
+                {{tweet.text|safe}}
+            </div>
+            <div class="tweet__timestamp">{{ tweet.time|date:"g:i A - j M Y" }}</div>
+            <a href="https://www.twitter.com/{{ tweet.user }}/status/{{ tweet.id }}" title="View Tweet on Twitter"><span class="tweet__link"> </span></a>
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% comment %} Don't return anything if Twitter isn't working. Looks better blank. {% endcomment %}

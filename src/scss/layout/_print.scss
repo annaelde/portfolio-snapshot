@@ -1,0 +1,92 @@
+@media print
+{
+	header, nav, footer
+	{
+		display: none !important;
+	}
+
+	.tag-list, .social, .post__banner, #disqus_thread, .comment-button, .post__related-posts, .post__separator
+	{
+		display: none !important;
+	}
+
+	body, h1, h2, h3, ol, ul, div, p
+	{
+		border: 0;
+		display: block !important;
+		float: none !important;
+		overflow: visible;
+		position: static !important;
+		width: auto !important;
+	}
+
+	body
+	{
+		padding: 0 0 30pt 0 !important;
+	}
+
+	*, *:before, *:after
+	{
+		background: transparent !important;
+		box-shadow: none !important;
+		color: #000 !important;
+		text-shadow: none !important;
+	}
+
+	a, a:visited
+	{
+		text-decoration: underline;
+	}
+
+	a[href]:after
+	{
+		content: " (" attr(href) ")";
+	}
+
+	abbr[title]:after
+	{
+		content: " (" attr(title) ")";
+	}
+
+	a[href^="#"]:after, a[href^="javascript:"]:after
+	{
+		content: "";
+	}
+
+	pre
+	{
+		white-space: pre-wrap !important;
+	}
+
+	pre, blockquote
+	{
+		border: 1px solid #999;
+		page-break-inside: avoid;
+	}
+
+	thead
+	{
+		display: table-header-group;
+	}
+
+	tr, img, p
+	{
+		page-break-inside: avoid !important;
+	}
+
+	p, h2, h3
+	{
+		orphans: 3;
+		widows: 3;
+	}
+
+	h2, h3
+	{
+		page-break-after: avoid;
+	}
+
+	@page 
+	{
+		margin: 50mm !important;
+	}
+}
