@@ -51,14 +51,14 @@ build/
 build.zip
 
 # CSS
-site/static/css/style.css
+site/static/css/
 
 # SCSS
 .sass-cache/
 *.css.map
 
 # JavaScript
-site/static/js/bundle.js
+site/static/js/
 *.js.map
 
 # Python
@@ -108,7 +108,6 @@ Thumbs.db
 ################
 site/static/rest_framework/
 site/static/debug_toolbar/
-site/static/admin/
 
 ##########
 # Django #

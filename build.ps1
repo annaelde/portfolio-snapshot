@@ -39,6 +39,13 @@ Move-Item -Path "./build/assets/static/favicon.ico" -Destination "./build/assets
 # Dump the DB
 docker exec -d aec_postgres bash -c "pg_dump --username=anna --format=c --file=/db/build.bak aec" | Out-Null
 
+# Cache busting!
+$css = $(Get-ChildItem ./build/assets/static/css/style.*.css | Sort LastWriteTime | Select -Last 1).Name
+$js = $(Get-ChildItem ./build/assets/static/js/bundle.*.js | Sort LastWriteTime | Select -Last 1).Name
+
+findReplace -Path "./build/project/aec/templates/aec/base.html" -Find "style.css" -Replace $css
+findReplace -Path "./build/project/aec/templates/aec/base.html" -Find "bundle.js" -Replace $js
+
 # Add projects to assets
 git clone https://github.com/annaelde/rain-city.git ./build/assets/rain-city
 git clone https://github.com/annaelde/desert-time.git ./build/assets/desert-time

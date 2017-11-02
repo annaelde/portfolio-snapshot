@@ -14,29 +14,31 @@ const dir = {
     bundleCSS: './site/static/css/'
 }
 
-const commonConfig = {
-    entry: [dir.entryJS + 'entry.js', dir.entryCSS + 'style.scss'],
-    output: { filename: dir.bundleJS + 'bundle.js' },
-    plugins: [
-        new ExtractTextPlugin({
-            filename: dir.bundleCSS + 'style.css',
-            allChunks: true
-        })
-    ],
-    node: {
-        console: false,
-        Buffer: false,
-        path: false,
-        url: false,
-        global: false,
-        fs: 'empty',
-        net: 'empty',
-        tls: 'empty'
+const commonConfig = env => {
+    return {
+        entry: [dir.entryJS + 'entry.js', dir.entryCSS + 'style.scss'],
+        output: { filename: dir.bundleJS + (env.prod ? 'bundle.[chunkhash].js' : 'bundle.js') },
+        plugins: [
+            new ExtractTextPlugin({
+                filename: dir.bundleCSS + (env.prod ? 'style.[chunkhash].css' : 'style.css'),
+                allChunks: true
+            })
+        ],
+        node: {
+            console: false,
+            Buffer: false,
+            path: false,
+            url: false,
+            global: false,
+            fs: 'empty',
+            net: 'empty',
+            tls: 'empty'
+        }
     }
 }
 
 module.exports = (env = {}) => {
-    var config = merge.smart(commonConfig, ruleConfig(env))
+    var config = merge.smart(commonConfig(env), ruleConfig(env))
 
     if (env.prod === true) config = merge.smart(config, prodConfig(dir))
     else if (env.dev === true) config = merge.smart(config, devConfig)
