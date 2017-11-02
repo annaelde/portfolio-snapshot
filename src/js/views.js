@@ -29,7 +29,9 @@ var post_detail = Barba.BaseView.extend({
 
         // Add table of contents sidebar, if there is a TOC
         var toc = document.querySelector('.toc')
-        if (typeof toc !== undefined) {
+        // Make sure it's not disabled
+        var disable = document.querySelector('.toc--disabled')
+        if (toc && !disable) {
             var content = document.querySelector('.post__content')
             var minScroll, maxScroll
             var sidebar = toc.cloneNode(true)
