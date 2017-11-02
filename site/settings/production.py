@@ -19,6 +19,12 @@ STATIC_ROOT = get_secret('STATIC_ROOT', secrets)
 
 GOOGLE_RECAPTCHA_SECRET_KEY = get_secret('RECAPTCHA_KEY_SECRET', secrets)
 GOOGLE_RECAPTCHA_PUBLIC_KEY = get_secret('RECAPTCHA_KEY_PUBLIC', secrets)
+
+TWITTER_CONSUMER = get_secret('TWITTER_CONSUMER', secrets)
+TWITTER_CONSUMER_SECRET = get_secret('TWITTER_CONSUMER_SECRET', secrets)
+TWITTER_ACCESS = get_secret('TWITTER_ACCESS', secrets)
+TWITTER_ACCESS_SECRET = get_secret('TWITTER_ACCESS_SECRET', secrets) 
+
 ALLOWED_HOSTS = get_secret('ALLOWED_HOSTS', secrets)
 DATABASES = {
     'default': get_secret('DATABASE_CONFIG', secrets)

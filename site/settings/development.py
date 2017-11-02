@@ -15,6 +15,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 GOOGLE_RECAPTCHA_SECRET_KEY = get_secret('RECAPTCHA_KEY_SECRET', secrets)
 GOOGLE_RECAPTCHA_PUBLIC_KEY = get_secret('RECAPTCHA_KEY_PUBLIC', secrets)
+
+TWITTER_CONSUMER = ''
+TWITTER_CONSUMER_SECRET = ''
+TWITTER_ACCESS = ''
+TWITTER_ACCESS_SECRET = ''
+
 ALLOWED_HOSTS = get_secret('ALLOWED_HOSTS', secrets)
 DATABASES = {
     'default': get_secret('DATABASE_CONFIG', secrets)
