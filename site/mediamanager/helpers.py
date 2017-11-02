@@ -18,7 +18,7 @@ def get_directory(instance: object) -> str:
     Returns the directory used to store media files for this type of object.
     """
     app_dir = slugify(instance.content_object.__module__.split('.')[0])
-    object_dir = slugify(instance.content_object.__str__().lower())
+    object_dir = instance.content_object.slug
     return path.join('images', app_dir, object_dir)
 
 def insert_images(instance: object, text: str) -> str:
