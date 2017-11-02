@@ -31,7 +31,14 @@ Posts about web development, programming, and technology.
     <div class="post-list__item post-list__item--full">
 
         <a href="{% url 'blog:post_detail' post.slug %}" class="post-list__heading post-list__heading--full">
-            <img src="{{ post.default_banner.media_file.url }}" alt="{{ post.title }}" />
+            <img 
+            {% if post.responsive_banners %} 
+            src="{{ post.small_banner.media_file.url }}"
+            {% else %}
+            src="{{ post.default_banner.media_file.url }}"
+            {% endif %}
+            alt="{{ post.default_banner.alt_text }}" 
+            title="{{ post.default_banner.title }}" />
         </a>
         
         <div class="post-list__meta">
