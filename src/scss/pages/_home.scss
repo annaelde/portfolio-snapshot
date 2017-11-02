@@ -29,7 +29,7 @@
     @include button-lines-meeting($c_primary, $c_secondary, 3px);
 	@include type-large;
 	float: right;
-	margin: scale(1) * 1rem 1rem scale(1) * 1rem scale(3) * 1rem;
+	margin: 0 1rem scale(1) * 1rem scale(3) * 1rem;
 	text-align: center;
 	transition: color .3s;
 	width: scale(5) * 1em;
