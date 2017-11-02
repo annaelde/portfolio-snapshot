@@ -13,7 +13,7 @@
 
 <div class="heading">
     <h1 class="container">{{ post.title }}</h1>
-    <h4 class="subheading container">{{ post.author.first_name }} {{ post.author.last_name }} <i class="bullet"></i> {{ post.published_on|date:"F j Y" }}</h4>
+    <h4 class="subheading container">{{ post.author.first_name }} {{ post.author.last_name }} / {{ post.published_on|date:"F j Y" }}</h4>
 </div>
 
 {% if post.default_banner %}
